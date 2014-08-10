@@ -1,0 +1,3 @@
+Add jar library to your maven repository:
+
+mvn.bat install:install-file -Dfile=JNativeHook.jar -DgroupId=JNativeHook -DartifactId=JNativeHook -Dversion=1.1.2 -Dpackaging=jar
