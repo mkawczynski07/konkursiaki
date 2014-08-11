@@ -42,31 +42,11 @@ public class Main {
 
         saveImage(image, new File("/tmp/test.png"));
 
-        Map<String, Integer> result = new HashMap();
+        
         int counter = 0;
         GamePuzzle[][] gameArea = new GamePuzzle[6][6];
 
-        for (int i = 1; i <= 6; i++) {
-            for (int j = 1; j <= 6; j++) {
-                int x = 33 + (j == 1 ? 0 : ((j - 1) * 108));
-                int y = 33 + (i == 1 ? 0 : ((i - 1) * 108));
-                Point position = new Point(x + X_GAME_AREA_POSITION_ON_SCREEN,
-                        y + Y_GAME_AREA_POSITION_ON_SCREEN);
-
-                Rectangle rectangle = new Rectangle(x, y, 40, 40);
-
-                String hash = gameImage.getSumbImageHash(rectangle);
-                saveImage(gameImage.getSubImage(rectangle), new File("/tmp/" + i + "_" + j + ".png"));
-
-                if (result.containsKey(hash) == false) {
-                    counter++;
-                    result.put(hash, counter);
-                }
-
-                gameArea[j - 1][i - 1] = new GamePuzzle(position, result.get(hash), j - 1, i - 1);
-                System.out.println(gameArea[j - 1][i - 1]);
-            }
-        }
+        
 
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 6; j++) {

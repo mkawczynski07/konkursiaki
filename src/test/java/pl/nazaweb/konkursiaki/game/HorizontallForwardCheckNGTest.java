@@ -12,6 +12,7 @@ import java.util.Map;
 import javax.imageio.ImageIO;
 import static org.testng.Assert.assertTrue;
 import org.testng.annotations.Test;
+import pl.nazaweb.konkursiaki.AbstractTest;
 import pl.nazaweb.konkursiaki.GamePuzzle;
 import static pl.nazaweb.konkursiaki.Main.X_GAME_AREA_POSITION_ON_SCREEN;
 import static pl.nazaweb.konkursiaki.Main.Y_GAME_AREA_POSITION_ON_SCREEN;
@@ -21,7 +22,7 @@ import pl.nazaweb.konkursiaki.screen.GameImage;
  *
  * @author naza
  */
-public class HorizontallForwardCheckNGTest {
+public class HorizontallForwardCheckNGTest extends AbstractTest {
 
     @Test
     public void shouldCorrectFind() throws IOException, AWTException {
@@ -50,27 +51,13 @@ public class HorizontallForwardCheckNGTest {
                     result.put(hash, counter);
                 }
 
-                gameArea[j - 1][i - 1] = new GamePuzzle(position, result.get(hash), j - 1, i - 1);
+                gameArea[i - 1][j - 1] = new GamePuzzle(position, result.get(hash), i - 1, j - 1);
+
             }
         }
 
         assertTrue(new HorizontallForwardCheck(gameArea, 1, 1).check());
 
-    }
-
-    public String getFileAbsolutePath(String file) {
-        return getBasePath()
-                + getClassResourcePath(this.getClass())
-                + File.separator
-                + file;
-    }
-
-    private String getBasePath() {
-        return System.getProperty("basedir", ".") + File.separator + "src" + File.separator + "test" + File.separator + "java" + File.separator;
-    }
-
-    public String getClassResourcePath(Class<?> clazz) {
-        return clazz.getPackage().getName().replace(".", File.separator);
     }
 
 }

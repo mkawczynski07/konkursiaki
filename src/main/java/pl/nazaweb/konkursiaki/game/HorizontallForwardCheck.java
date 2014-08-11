@@ -26,13 +26,11 @@ public class HorizontallForwardCheck {
             return false;
         }
         if (shouldSwitchNext()) {
-            System.out.println("shouldSwitchNext");
             getNext(1).click();
             getNext(2).click();
             return true;
         }
         if (shouldSwitchUpper()) {
-            System.out.println("shouldSwitchUpper");
             getNext(1).click();
             getUpper().click();
             return true;
@@ -47,7 +45,7 @@ public class HorizontallForwardCheck {
     }
 
     private boolean isPreviousExists() {
-        if (x - 1 < 0) {
+        if (y - 1 < 0) {
             return false;
         }
         return getPrevious() != null;
@@ -58,7 +56,7 @@ public class HorizontallForwardCheck {
     }
 
     private GamePuzzle getPrevious() {
-        return gameArea[x - 1][y];
+        return gameArea[x][y - 1];
     }
 
     private GamePuzzle getCurrent() {
@@ -73,14 +71,14 @@ public class HorizontallForwardCheck {
     }
 
     private boolean isNextExists(int interval) {
-        if (x + interval >= 6) {
+        if (y + interval >= 6) {
             return false;
         }
-        return getNext(interval) == null;
+        return getNext(interval) != null;
     }
 
     private GamePuzzle getNext(int interval) {
-        return gameArea[x + interval][y];
+        return gameArea[x][y + interval];
     }
 
     private boolean shouldSwitchUpper() {
@@ -91,14 +89,14 @@ public class HorizontallForwardCheck {
     }
 
     private boolean isUpperExists() {
-        if (y - 1 >= 0 && x + 1 < 6) {
+        if (x - 1 >= 0 && y + 1 < 6) {
             return getUpper() != null;
         }
         return false;
     }
 
     private GamePuzzle getUpper() {
-        return gameArea[x + 1][y - 1];
+        return gameArea[y + 1][x - 1];
     }
 
     private boolean shouldSwitchLower() {
@@ -109,19 +107,13 @@ public class HorizontallForwardCheck {
     }
 
     private boolean isLowerExists() {
-        if (y + 1 < 6 && x + 1 < 6) {
+        if (x + 1 < 6 && y + 1 < 6) {
             return getLower() != null;
         }
         return false;
     }
 
     private GamePuzzle getLower() {
-        return gameArea[x + 1][y + 1];
+        return gameArea[y + 1][x + 1];
     }
 }
-//przeszly mnie dreszcze. wiec  w domu bedzimy to robic? a co bedzie hardcoreowym akcentem?
-/*
- żeby raz. Ja tam cał czas marze o nocy do upadłego 5, 8, 10 razy? Więcej? Może zacznijmy od 3
- hardcorowym ... co możemy nazwać hardcorem?
-    
- */
