@@ -1,7 +1,5 @@
 package pl.nazaweb.konkursiaki.game;
 
-import pl.nazaweb.konkursiaki.GamePuzzle;
-
 /**
  *
  * @author naza

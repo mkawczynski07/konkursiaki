@@ -1,4 +1,4 @@
-package pl.nazaweb.konkursiaki;
+package pl.nazaweb.konkursiaki.game;
 
 import java.awt.AWTException;
 import java.awt.Point;

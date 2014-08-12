@@ -5,7 +5,6 @@ import java.io.IOException;
 import static org.testng.Assert.assertTrue;
 import org.testng.annotations.Test;
 import pl.nazaweb.konkursiaki.AbstractTest;
-import pl.nazaweb.konkursiaki.GamePuzzle;
 import pl.nazaweb.konkursiaki.screen.GameImageReader;
 
 /**

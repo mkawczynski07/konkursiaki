@@ -5,9 +5,9 @@ import java.awt.Rectangle;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
-import pl.nazaweb.konkursiaki.GamePuzzle;
-import static pl.nazaweb.konkursiaki.game.Main.X_GAME_AREA_POSITION_ON_SCREEN;
-import static pl.nazaweb.konkursiaki.game.Main.Y_GAME_AREA_POSITION_ON_SCREEN;
+import static pl.nazaweb.konkursiaki.Main.X_GAME_AREA_POSITION_ON_SCREEN;
+import static pl.nazaweb.konkursiaki.Main.Y_GAME_AREA_POSITION_ON_SCREEN;
+import pl.nazaweb.konkursiaki.game.GamePuzzle;
 
 /**
  *

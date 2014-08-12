@@ -1,15 +1,14 @@
-package pl.nazaweb.konkursiaki.game;
+package pl.nazaweb.konkursiaki;
 
 import java.awt.AWTException;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import javax.imageio.ImageIO;
-import javax.imageio.stream.FileImageOutputStream;
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
-import pl.nazaweb.konkursiaki.GamePuzzle;
+import pl.nazaweb.konkursiaki.game.GamePuzzle;
+import pl.nazaweb.konkursiaki.game.HorizontallForwardCheck;
 import pl.nazaweb.konkursiaki.listeners.EscapeKeyListener;
 import pl.nazaweb.konkursiaki.listeners.MouseListener;
 import pl.nazaweb.konkursiaki.screen.GameImage;
