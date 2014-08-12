@@ -6,8 +6,8 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import pl.nazaweb.konkursiaki.GamePuzzle;
-import static pl.nazaweb.konkursiaki.Main.X_GAME_AREA_POSITION_ON_SCREEN;
-import static pl.nazaweb.konkursiaki.Main.Y_GAME_AREA_POSITION_ON_SCREEN;
+import static pl.nazaweb.konkursiaki.game.Main.X_GAME_AREA_POSITION_ON_SCREEN;
+import static pl.nazaweb.konkursiaki.game.Main.Y_GAME_AREA_POSITION_ON_SCREEN;
 
 /**
  *
@@ -33,14 +33,14 @@ public class GameImageReader {
         for (int j = 1; j <= 6; j++) {
             int x = getRowColumnX(j);
             int y = getRowColumnY(i);
-            
+
             Point position = getPuzzlePositionOnScreen(x, y);
 
             String puzzleHash = getPuzzleHash(x, y);
 
             incrementHashCounter(puzzleHash);
 
-            gameArea[j - 1][i - 1] = new GamePuzzle(position, hashs.get(puzzleHash), j - 1, i - 1);
+            gameArea[i - 1][j - 1] = new GamePuzzle(position, hashs.get(puzzleHash), i - 1, j - 1);
         }
     }
 
@@ -57,9 +57,8 @@ public class GameImageReader {
     }
 
     private Point getPuzzlePositionOnScreen(int x, int y) {
-        Point position = new Point(x + X_GAME_AREA_POSITION_ON_SCREEN,
+        return new Point(x + X_GAME_AREA_POSITION_ON_SCREEN,
                 y + Y_GAME_AREA_POSITION_ON_SCREEN);
-        return position;
     }
 
     private void init(GameImage image) {

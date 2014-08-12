@@ -1,10 +1,7 @@
 package pl.nazaweb.konkursiaki.screen;
 
 import java.awt.AWTException;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import javax.imageio.ImageIO;
 import static org.testng.Assert.*;
 import org.testng.annotations.Test;
 import pl.nazaweb.konkursiaki.AbstractTest;
@@ -23,14 +20,15 @@ public class GameImageReaderNGTest extends AbstractTest {
         GAME_IMAGE_TYPES[0][1] = 1;
         GAME_IMAGE_TYPES[0][2] = 1;
         GAME_IMAGE_TYPES[0][3] = 2;
-        GAME_IMAGE_TYPES[0][4] = 1;
-        GAME_IMAGE_TYPES[0][5] = 0;
+        GAME_IMAGE_TYPES[0][4] = 0;
+        GAME_IMAGE_TYPES[0][5] = 1;
 
         GAME_IMAGE_TYPES[1][0] = 3;
         GAME_IMAGE_TYPES[1][1] = 3;
         GAME_IMAGE_TYPES[1][2] = 4;
         GAME_IMAGE_TYPES[1][3] = 3;
         GAME_IMAGE_TYPES[1][4] = 1;
+        GAME_IMAGE_TYPES[1][5] = 0;
 
         GAME_IMAGE_TYPES[2][0] = 2;
         GAME_IMAGE_TYPES[2][1] = 0;
@@ -56,9 +54,9 @@ public class GameImageReaderNGTest extends AbstractTest {
         GAME_IMAGE_TYPES[5][0] = 0;
         GAME_IMAGE_TYPES[5][1] = 5;
         GAME_IMAGE_TYPES[5][2] = 4;
-        GAME_IMAGE_TYPES[5][3] = 3;
+        GAME_IMAGE_TYPES[5][3] = 2;
         GAME_IMAGE_TYPES[5][4] = 4;
-        GAME_IMAGE_TYPES[5][5] = 3;
+        GAME_IMAGE_TYPES[5][5] = 2;
     }
 
     @Test
@@ -68,16 +66,11 @@ public class GameImageReaderNGTest extends AbstractTest {
 
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 6; j++) {
+                System.out.println(i + ", " + j + " : "
+                        + gameArea[i][j].getType() + " = " + GAME_IMAGE_TYPES[i][j]);
                 assertEquals(gameArea[i][j].getType(), GAME_IMAGE_TYPES[i][j]);
             }
         }
-    }
-
-    private GameImage getTestGameImage() throws IOException, AWTException {
-        BufferedImage image = ImageIO.read(new File(getFileAbsolutePath("test.png")));
-        GameImage gameImage = new GameImage();
-        gameImage.setImage(image);
-        return gameImage;
     }
 
 }

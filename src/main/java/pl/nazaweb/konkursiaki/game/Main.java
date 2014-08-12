@@ -1,20 +1,20 @@
-package pl.nazaweb.konkursiaki;
+package pl.nazaweb.konkursiaki.game;
 
 import java.awt.AWTException;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
 import javax.imageio.ImageIO;
 import javax.imageio.stream.FileImageOutputStream;
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
-import pl.nazaweb.konkursiaki.game.HorizontallForwardCheck;
+import pl.nazaweb.konkursiaki.GamePuzzle;
 import pl.nazaweb.konkursiaki.listeners.EscapeKeyListener;
 import pl.nazaweb.konkursiaki.listeners.MouseListener;
 import pl.nazaweb.konkursiaki.screen.GameImage;
+import pl.nazaweb.konkursiaki.screen.GameImageReader;
+import pl.nazaweb.konkursiaki.screen.Utils;
 
 /**
  *
@@ -40,13 +40,9 @@ public class Main {
         gameImage.capture(MAIN_GAME_RECT);
         BufferedImage image = gameImage.getImage();
 
-        saveImage(image, new File("/tmp/test.png"));
+        Utils.saveImage(image, new File("/tmp/test.png"));
 
-        
-        int counter = 0;
-        GamePuzzle[][] gameArea = new GamePuzzle[6][6];
-
-        
+        GamePuzzle[][] gameArea = new GameImageReader().read(gameImage);
 
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 6; j++) {
@@ -57,16 +53,8 @@ public class Main {
             }
         }
 
-        saveImage(image, new File("/tmp/test.png"));
+        Utils.saveImage(image, new File("/tmp/test.png"));
 
-    }
-
-    private static void saveImage(BufferedImage image, File file) {
-        try (FileImageOutputStream outputStream = new FileImageOutputStream(file)) {
-            ImageIO.write(image, "png", outputStream);
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-        }
     }
 
     public static void runMouseListener() throws NativeHookException {
