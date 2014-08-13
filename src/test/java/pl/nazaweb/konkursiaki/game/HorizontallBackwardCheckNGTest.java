@@ -1,5 +1,6 @@
 package pl.nazaweb.konkursiaki.game;
 
+import pl.nazaweb.konkursiaki.game.checkers.horizontal.HorizontallBackwardCheck;
 import java.awt.AWTException;
 import java.io.IOException;
 import static org.testng.Assert.*;
@@ -18,6 +19,12 @@ public class HorizontallBackwardCheckNGTest extends AbstractTest {
     public void shouldCorrectFind() throws IOException, AWTException {
         GamePuzzle[][] gameArea = new GameImageReader().read(getTest2GameImage());
         assertTrue(new HorizontallBackwardCheck(gameArea, 5, 2).check());
+    }
+
+    @Test
+    public void shouldCorrectFindBackward() throws IOException, AWTException {
+        GamePuzzle[][] gameArea = new GameImageReader().read(getTest2GameImage());
+        assertTrue(new HorizontallBackwardCheck(gameArea, 2, 2).check());
     }
 
     @Test

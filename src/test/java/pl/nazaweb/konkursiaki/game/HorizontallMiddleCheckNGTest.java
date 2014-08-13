@@ -1,12 +1,9 @@
 package pl.nazaweb.konkursiaki.game;
 
+import pl.nazaweb.konkursiaki.game.checkers.horizontal.HorizontallMiddleCheck;
 import java.awt.AWTException;
 import java.io.IOException;
 import static org.testng.Assert.*;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pl.nazaweb.konkursiaki.AbstractTest;
 import pl.nazaweb.konkursiaki.screen.GameImage;
@@ -17,6 +14,12 @@ import pl.nazaweb.konkursiaki.screen.GameImageReader;
  * @author naza
  */
 public class HorizontallMiddleCheckNGTest extends AbstractTest {
+
+    @Test
+    public void shouldFindMiddle() throws IOException, AWTException {
+        GamePuzzle[][] gameArea = new GameImageReader().read(getTest2GameImage());
+        assertTrue(new HorizontallMiddleCheck(gameArea, 0, 4).check());
+    }
 
     @Test
     public void shouldDontFindBackward() throws IOException, AWTException {

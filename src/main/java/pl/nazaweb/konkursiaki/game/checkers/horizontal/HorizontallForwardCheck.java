@@ -1,21 +1,19 @@
-package pl.nazaweb.konkursiaki.game;
+package pl.nazaweb.konkursiaki.game.checkers.horizontal;
+
+import pl.nazaweb.konkursiaki.game.GamePuzzle;
+import pl.nazaweb.konkursiaki.game.checkers.AbstractChecker;
 
 /**
  *
  * @author naza
  */
-public class HorizontallForwardCheck {
-
-    private final GamePuzzle[][] gameArea;
-    private final int x;
-    private final int y;
+public class HorizontallForwardCheck extends AbstractChecker {
 
     public HorizontallForwardCheck(GamePuzzle[][] gameArea, int j, int i) {
-        this.gameArea = gameArea;
-        this.x = j;
-        this.y = i;
+        super(gameArea, j, i);
     }
 
+    @Override
     public boolean check() {
         if (isPreviousExists() == false) {
             return false;
@@ -94,7 +92,7 @@ public class HorizontallForwardCheck {
     }
 
     private GamePuzzle getUpper() {
-        return gameArea[y + 1][x - 1];
+        return gameArea[x + 1][y - 1];
     }
 
     private boolean shouldSwitchLower() {
@@ -112,6 +110,6 @@ public class HorizontallForwardCheck {
     }
 
     private GamePuzzle getLower() {
-        return gameArea[y + 1][x + 1];
+        return gameArea[x + 1][y + 1];
     }
 }

@@ -1,21 +1,20 @@
-package pl.nazaweb.konkursiaki.game;
+package pl.nazaweb.konkursiaki.game.checkers.horizontal;
+
+import pl.nazaweb.konkursiaki.game.GamePuzzle;
+import pl.nazaweb.konkursiaki.game.checkers.AbstractChecker;
+import pl.nazaweb.konkursiaki.game.checkers.Checker;
 
 /**
  *
  * @author naza
  */
-public class HorizontallBackwardCheck {
-
-    private final GamePuzzle[][] gameArea;
-    private final int x;
-    private final int y;
+public class HorizontallBackwardCheck extends AbstractChecker {
 
     public HorizontallBackwardCheck(GamePuzzle[][] gameArea, int j, int i) {
-        this.gameArea = gameArea;
-        this.x = j;
-        this.y = i;
+        super(gameArea, j, i);
     }
 
+    @Override
     public boolean check() {
         if (isNextExists() == false) {
             return false;

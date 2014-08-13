@@ -8,7 +8,7 @@ import java.io.File;
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
 import pl.nazaweb.konkursiaki.game.GamePuzzle;
-import pl.nazaweb.konkursiaki.game.HorizontallForwardCheck;
+import pl.nazaweb.konkursiaki.game.checkers.horizontal.HorizontallForwardCheck;
 import pl.nazaweb.konkursiaki.listeners.EscapeKeyListener;
 import pl.nazaweb.konkursiaki.listeners.MouseListener;
 import pl.nazaweb.konkursiaki.screen.GameImage;
