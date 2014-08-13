@@ -14,7 +14,11 @@ import pl.nazaweb.konkursiaki.screen.GameImage;
 public abstract class AbstractTest {
 
     protected GameImage getTestGameImage() throws IOException, AWTException {
-        BufferedImage image = ImageIO.read(new File(getFileAbsolutePath("test.png")));
+        return getTestGameImage("test.png");
+    }
+
+    protected GameImage getTestGameImage(String imageFile) throws IOException, AWTException {
+        BufferedImage image = ImageIO.read(new File(getFileAbsolutePath(imageFile)));
         GameImage gameImage = new GameImage();
         gameImage.setImage(image);
         return gameImage;
