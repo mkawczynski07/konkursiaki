@@ -27,6 +27,12 @@ public class VerticalUpperCheckNGTest extends AbstractTest {
         assertTrue(new VerticalUpperCheck(gameArea, 1, 1).check() == false);
     }
 
+    @Test
+    public void shouldDontFindNext() throws IOException, AWTException {
+        GamePuzzle[][] gameArea = new GameImageReader().read(getTest2GameImage());
+        assertTrue(new VerticalUpperCheck(gameArea, 3, 3).check() == false);
+    }
+
     private GameImage getTest2GameImage() throws IOException, AWTException {
         return getTestGameImage("test2.png");
     }
