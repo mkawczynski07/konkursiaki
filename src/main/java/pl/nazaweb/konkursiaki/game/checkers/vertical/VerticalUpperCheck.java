@@ -17,6 +17,7 @@ public class VerticalUpperCheck extends AbstractChecker {
 
     @Override
     public boolean check() {
+        System.out.println(this.getClass().getSimpleName());
         if (isLowerExists() == false) {
             return false;
         }
@@ -27,18 +28,18 @@ public class VerticalUpperCheck extends AbstractChecker {
             return false;
         }
         if (shoulSwitchUpperRight()) {
-            getCurrent().click();
+            getUpper(1).click();
             getUpperRight().click();
             return true;
         }
         if (shouldSwitchUpperLeft()) {
-            getCurrent().click();
+            getUpper(1).click();
             getUpperLeft().click();
             return true;
         }
         if (shouldSwitchUpper()) {
-            getCurrent().click();
-            getUpper().click();
+            getUpper(1).click();
+            getUpper(2).click();
             return true;
         }
         return false;
@@ -105,20 +106,20 @@ public class VerticalUpperCheck extends AbstractChecker {
 
     private boolean shouldSwitchUpper() {
         if (isUpperNextExists()) {
-            return getUpper().getType() == getCurrent().getType();
+            return getUpper(2).getType() == getCurrent().getType();
         }
         return false;
     }
 
     private boolean isUpperNextExists() {
         if (x - 2 >= 0) {
-            return getUpper() != null;
+            return getUpper(2) != null;
         }
         return false;
     }
 
-    private GamePuzzle getUpper() {
-        return gameArea[x - 2][y];
+    private GamePuzzle getUpper(int interval) {
+        return gameArea[x - interval][y];
     }
 
 }

@@ -18,7 +18,19 @@ public class VerticalLowerCheckNGTest extends AbstractTest {
     @Test
     public void shouldFind() throws IOException, AWTException {
         GamePuzzle[][] gameArea = new GameImageReader().read(getTest3GameImage());
-        assertTrue(new VerticalLowerCheck(gameArea, 4, 0).check() == false);
+        assertTrue(new VerticalLowerCheck(gameArea, 4, 0).check());
+    }
+
+    @Test
+    public void shouldDontThrowException() throws IOException, AWTException {
+        GamePuzzle[][] gameArea = new GameImageReader().read(getTest12GameImage());
+        new VerticalLowerCheck(gameArea, 1, 5).check();
+    }
+
+    @Test
+    public void shouldFind4() throws IOException, AWTException {
+        GamePuzzle[][] gameArea = new GameImageReader().read(getTest4GameImage());
+        assertTrue(new VerticalLowerCheck(gameArea, 2, 1).check());
     }
 
     @Test
@@ -47,4 +59,11 @@ public class VerticalLowerCheckNGTest extends AbstractTest {
         return getTestGameImage("test3.png");
     }
 
+    private GameImage getTest4GameImage() throws IOException, AWTException {
+        return getTestGameImage("test4.png");
+    }
+
+    private GameImage getTest12GameImage() throws IOException, AWTException {
+        return getTestGameImage("test12.png");
+    }
 }

@@ -2,7 +2,6 @@ package pl.nazaweb.konkursiaki.game.checkers.horizontal;
 
 import pl.nazaweb.konkursiaki.game.GamePuzzle;
 import pl.nazaweb.konkursiaki.game.checkers.AbstractChecker;
-import pl.nazaweb.konkursiaki.game.checkers.Checker;
 
 /**
  *
@@ -16,6 +15,7 @@ public class HorizontallBackwardCheck extends AbstractChecker {
 
     @Override
     public boolean check() {
+        System.out.println(this.getClass().getSimpleName());
         if (isNextExists() == false) {
             return false;
         }
@@ -35,6 +35,7 @@ public class HorizontallBackwardCheck extends AbstractChecker {
         if (shuldSwitchLower()) {
             getPrevious(1).click();
             getLower().click();
+            return true;
         }
         return false;
     }
@@ -102,14 +103,14 @@ public class HorizontallBackwardCheck extends AbstractChecker {
     }
 
     private boolean isLowerExists() {
-        if (y - 1 >= 0 && x + 1 < 6) {
+        if (x - 1 >= 0 && y + 1 < 6) {
             return getLower() != null;
         }
         return false;
     }
 
     private GamePuzzle getLower() {
-        return gameArea[x - 1][y + 1];
+        return gameArea[x - 1][y - 1];
     }
 
 }

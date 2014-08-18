@@ -15,6 +15,7 @@ public class HorizontallMiddleCheck extends AbstractChecker {
 
     @Override
     public boolean check() {
+        System.out.println(this.getClass().getSimpleName());
         if (isPreviousExists() == false) {
             return false;
         }
@@ -75,14 +76,14 @@ public class HorizontallMiddleCheck extends AbstractChecker {
     }
 
     private boolean isUpperExists() {
-        if (y - 1 >= 0) {
+        if (x - 1 >= 0) {
             return getUpper() != null;
         }
         return false;
     }
 
     private GamePuzzle getUpper() {
-        return gameArea[x][y - 1];
+        return gameArea[x - 1][y];
     }
 
     private boolean shouldSwitchLower() {
@@ -93,14 +94,14 @@ public class HorizontallMiddleCheck extends AbstractChecker {
     }
 
     private boolean isLowerExists() {
-        if (y + 1 < 6) {
+        if (x + 1 < 6) {
             return getLower() != null;
         }
         return false;
     }
 
     private GamePuzzle getLower() {
-        return gameArea[x][y + 1];
+        return gameArea[x + 1][y];
     }
 
 }

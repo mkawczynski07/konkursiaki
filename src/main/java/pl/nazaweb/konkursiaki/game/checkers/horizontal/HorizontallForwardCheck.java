@@ -15,6 +15,7 @@ public class HorizontallForwardCheck extends AbstractChecker {
 
     @Override
     public boolean check() {
+        System.out.println(this.getClass().getSimpleName());
         if (isPreviousExists() == false) {
             return false;
         }
@@ -32,7 +33,6 @@ public class HorizontallForwardCheck extends AbstractChecker {
             return true;
         }
         if (shouldSwitchLower()) {
-            System.out.println("");
             getNext(1).click();
             getLower().click();
             return true;
@@ -92,7 +92,7 @@ public class HorizontallForwardCheck extends AbstractChecker {
     }
 
     private GamePuzzle getUpper() {
-        return gameArea[x + 1][y - 1];
+        return gameArea[x - 1][y + 1];
     }
 
     private boolean shouldSwitchLower() {

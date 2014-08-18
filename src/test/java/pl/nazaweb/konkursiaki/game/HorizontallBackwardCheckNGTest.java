@@ -28,12 +28,32 @@ public class HorizontallBackwardCheckNGTest extends AbstractTest {
     }
 
     @Test
+    public void shouldDontThrowExceptionOnSecondElement() throws IOException, AWTException {
+        GamePuzzle[][] gameArea = new GameImageReader().read(getTest6GameImage());
+        new HorizontallBackwardCheck(gameArea, 0, 1).check();
+    }
+
+    @Test
     public void shouldDontFind() throws IOException, AWTException {
         GamePuzzle[][] gameArea = new GameImageReader().read(getTestGameImage());
         assertTrue(new HorizontallBackwardCheck(gameArea, 1, 1).check() == false);
     }
 
+    @Test
+    public void shouldDontFind2() throws IOException, AWTException {
+        GamePuzzle[][] gameArea = new GameImageReader().read(getTest9GameImage());
+        assertTrue(new HorizontallBackwardCheck(gameArea, 3, 2).check() == false);
+    }
+
     private GameImage getTest2GameImage() throws IOException, AWTException {
         return getTestGameImage("test2.png");
+    }
+
+    private GameImage getTest6GameImage() throws IOException, AWTException {
+        return getTestGameImage("test6.png");
+    }
+
+    private GameImage getTest9GameImage() throws IOException, AWTException {
+        return getTestGameImage("test9.png");
     }
 }

@@ -22,6 +22,12 @@ public class HorizontallMiddleCheckNGTest extends AbstractTest {
     }
 
     @Test
+    public void shouldDontFind() throws IOException, AWTException {
+        GamePuzzle[][] gameArea = new GameImageReader().read(getTest5GameImage());
+        assertTrue(new HorizontallMiddleCheck(gameArea, 2, 2).check() == false);
+    }
+
+    @Test
     public void shouldDontFindBackward() throws IOException, AWTException {
         GamePuzzle[][] gameArea = new GameImageReader().read(getTestGameImage());
         assertTrue(new HorizontallMiddleCheck(gameArea, 1, 1).check() == false);
@@ -35,6 +41,10 @@ public class HorizontallMiddleCheckNGTest extends AbstractTest {
 
     private GameImage getTest2GameImage() throws IOException, AWTException {
         return getTestGameImage("test2.png");
+    }
+
+    private GameImage getTest5GameImage() throws IOException, AWTException {
+        return getTestGameImage("test5.png");
     }
 
 }

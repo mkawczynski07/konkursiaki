@@ -17,6 +17,7 @@ public class VerticalLowerCheck extends AbstractChecker {
 
     @Override
     public boolean check() {
+        System.out.println(this.getClass().getSimpleName());
         if (isUpperExists() == false) {
             return false;
         }
@@ -27,17 +28,19 @@ public class VerticalLowerCheck extends AbstractChecker {
             return false;
         }
         if (shouldSwitchLower()) {
-            getCurrent().click();
+            getLower(1).click();
             getLower(2).click();
             return true;
         }
         if (shouldSwitchLowerLeft()) {
-            getCurrent().click();
+            getLower(1).click();
             getLowerLeft().click();
+            return true;
         }
         if (shouldSwitchLowerRight()) {
-            getCurrent().click();
+            getLower(1).click();
             getLowerRight().click();
+            return true;
         }
         return false;
     }
@@ -70,6 +73,35 @@ public class VerticalLowerCheck extends AbstractChecker {
 
     private GamePuzzle getLower(int i) {
         return gameArea[x + i][y];
+    }
+
+    private boolean shouldSwitchLower() {
+        if (isLowerExists(2)) {
+            return getLower(2).getType() == getCurrent().getType();
+        }
+        return false;
+    }
+
+    private boolean shouldSwitchLowerLeft() {
+        if (isLowerExists(1) && y - 1 > 0) {
+            return getLowerLeft().getType() == getCurrent().getType();
+        }
+        return false;
+    }
+
+    private GamePuzzle getLowerLeft() {
+        return gameArea[x + 1][y - 1];
+    }
+
+    private boolean shouldSwitchLowerRight() {
+        if (isLowerExists(1) && y + 1 < 6) {
+            return getLowerRight().getType() == getCurrent().getType();
+        }
+        return false;
+    }
+
+    private GamePuzzle getLowerRight() {
+        return gameArea[x + 1][y + 1];
     }
 
 }

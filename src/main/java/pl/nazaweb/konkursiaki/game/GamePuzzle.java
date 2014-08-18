@@ -27,6 +27,7 @@ public class GamePuzzle {
     public void click() {
         try {
             new MouseClick(postitionOnArea).execute();
+            System.out.println("clicked on : [" + postitionOnArea.x + ", " + postitionOnArea.y + "]");
         } catch (AWTException ex) {
             Logger.getLogger(GamePuzzle.class.getName()).log(Level.SEVERE, null, ex);
         }
