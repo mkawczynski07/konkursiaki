@@ -15,6 +15,11 @@ public class VerticalLowerCheck extends AbstractChecker {
         super(gameArea, j, i);
     }
 
+    public VerticalLowerCheck(GamePuzzle[][] gameArea, int j, int i, boolean executeClick) {
+        super(gameArea, j, i);
+        this.executeClick = executeClick;
+    }
+
     @Override
     public boolean check() {
         System.out.println(this.getClass().getSimpleName());
@@ -28,16 +33,25 @@ public class VerticalLowerCheck extends AbstractChecker {
             return false;
         }
         if (shouldSwitchLower()) {
+            if (isExecuteNotClick()) {
+                return true;
+            }
             getLower(1).click();
             getLower(2).click();
             return true;
         }
         if (shouldSwitchLowerLeft()) {
+            if (isExecuteNotClick()) {
+                return true;
+            }
             getLower(1).click();
             getLowerLeft().click();
             return true;
         }
         if (shouldSwitchLowerRight()) {
+            if (isExecuteNotClick()) {
+                return true;
+            }
             getLower(1).click();
             getLowerRight().click();
             return true;

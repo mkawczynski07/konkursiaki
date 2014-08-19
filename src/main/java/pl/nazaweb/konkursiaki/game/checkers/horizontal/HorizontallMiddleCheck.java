@@ -13,6 +13,11 @@ public class HorizontallMiddleCheck extends AbstractChecker {
         super(gameArea, j, i);
     }
 
+    public HorizontallMiddleCheck(GamePuzzle[][] gameArea, int j, int i, boolean executeClick) {
+        super(gameArea, j, i);
+        this.executeClick = executeClick;
+    }
+
     @Override
     public boolean check() {
         System.out.println(this.getClass().getSimpleName());
@@ -26,11 +31,17 @@ public class HorizontallMiddleCheck extends AbstractChecker {
             return false;
         }
         if (shouldSwitchUpper()) {
+            if (isExecuteNotClick()) {
+                return true;
+            }
             getCurrent().click();
             getUpper().click();
             return true;
         }
         if (shouldSwitchLower()) {
+            if (isExecuteNotClick()) {
+                return true;
+            }
             getCurrent().click();
             getLower().click();
             return true;

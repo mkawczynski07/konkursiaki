@@ -51,7 +51,7 @@ public abstract class AbstractTest {
 
     protected void loopOverGameArea(GamePuzzle[][] gameArea) {
         for (int i = 5; i >= 0; i--) {
-            new HorizontalFourCheck(gameArea, 0, i).check();
+            new HorizontalFourCheck(gameArea, 0, i, false).check();
             checkRow(i, gameArea);
         }
     }
@@ -59,12 +59,12 @@ public abstract class AbstractTest {
     protected boolean checkRow(int i, GamePuzzle[][] gameArea) {
         for (int j = 0; j < 6; j++) {
             System.out.println("[" + i + "][" + j + "]");
-            new HorizontallForwardCheck(gameArea, i, j).check();
-            new HorizontallBackwardCheck(gameArea, i, j).check();
-            new HorizontallMiddleCheck(gameArea, i, j).check();
-            new VerticalUpperCheck(gameArea, i, j).check();
-            new VerticalLowerCheck(gameArea, i, j).check();
-            new VerticalMiddleCheck(gameArea, i, j).check();
+            new HorizontallForwardCheck(gameArea, i, j, false).check();
+            new HorizontallBackwardCheck(gameArea, i, j, false).check();
+            new HorizontallMiddleCheck(gameArea, i, j, false).check();
+            new VerticalUpperCheck(gameArea, i, j, false).check();
+            new VerticalLowerCheck(gameArea, i, j, false).check();
+            new VerticalMiddleCheck(gameArea, i, j, false).check();
         }
         return false;
     }

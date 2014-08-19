@@ -15,6 +15,11 @@ public class VerticalUpperCheck extends AbstractChecker {
         super(gameArea, j, i);
     }
 
+    public VerticalUpperCheck(GamePuzzle[][] gameArea, int j, int i, boolean executeClick) {
+        super(gameArea, j, i);
+        this.executeClick = executeClick;
+    }
+
     @Override
     public boolean check() {
         System.out.println(this.getClass().getSimpleName());
@@ -28,16 +33,25 @@ public class VerticalUpperCheck extends AbstractChecker {
             return false;
         }
         if (shoulSwitchUpperRight()) {
+            if (isExecuteNotClick()) {
+                return true;
+            }
             getUpper(1).click();
             getUpperRight().click();
             return true;
         }
         if (shouldSwitchUpperLeft()) {
+            if (isExecuteNotClick()) {
+                return true;
+            }
             getUpper(1).click();
             getUpperLeft().click();
             return true;
         }
         if (shouldSwitchUpper()) {
+            if (isExecuteNotClick()) {
+                return true;
+            }
             getUpper(1).click();
             getUpper(2).click();
             return true;

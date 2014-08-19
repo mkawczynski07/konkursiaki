@@ -13,6 +13,11 @@ public class HorizontallForwardCheck extends AbstractChecker {
         super(gameArea, j, i);
     }
 
+    public HorizontallForwardCheck(GamePuzzle[][] gameArea, int j, int i, boolean executeClick) {
+        super(gameArea, j, i);
+        this.executeClick = executeClick;
+    }
+
     @Override
     public boolean check() {
         System.out.println(this.getClass().getSimpleName());
@@ -23,16 +28,25 @@ public class HorizontallForwardCheck extends AbstractChecker {
             return false;
         }
         if (shouldSwitchNext()) {
+            if (isExecuteNotClick()) {
+                return true;
+            }
             getNext(1).click();
             getNext(2).click();
             return true;
         }
         if (shouldSwitchUpper()) {
+            if (isExecuteNotClick()) {
+                return true;
+            }
             getNext(1).click();
             getUpper().click();
             return true;
         }
         if (shouldSwitchLower()) {
+            if (isExecuteNotClick()) {
+                return true;
+            }
             getNext(1).click();
             getLower().click();
             return true;

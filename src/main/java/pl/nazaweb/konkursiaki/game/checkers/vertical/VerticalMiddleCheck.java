@@ -15,6 +15,11 @@ public class VerticalMiddleCheck extends AbstractChecker {
         super(gameArea, j, i);
     }
 
+    public VerticalMiddleCheck(GamePuzzle[][] gameArea, int j, int i, boolean executeClick) {
+        super(gameArea, j, i);
+        this.executeClick = executeClick;
+    }
+
     @Override
     public boolean check() {
         System.out.println(this.getClass().getSimpleName());
@@ -28,11 +33,17 @@ public class VerticalMiddleCheck extends AbstractChecker {
             return false;
         }
         if (shouldSwitchLeft()) {
+            if (isExecuteNotClick()) {
+                return true;
+            }
             getCurrent().click();
             getLeft().click();
             return true;
         }
         if (shouldSwitchRight()) {
+            if (isExecuteNotClick()) {
+                return true;
+            }
             getCurrent().click();
             getRight().click();
             return true;

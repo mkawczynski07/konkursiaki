@@ -16,6 +16,11 @@ public class HorizontalFourCheck extends AbstractChecker {
         super(gameArea, j, i);
     }
 
+    public HorizontalFourCheck(GamePuzzle[][] gameArea, int j, int i, boolean executeClick) {
+        super(gameArea, j, i);
+        this.executeClick = executeClick;
+    }
+
     @Override
     public boolean check() {
         System.out.println(this.getClass().getSimpleName());
@@ -29,12 +34,18 @@ public class HorizontalFourCheck extends AbstractChecker {
         if (shouldCheckBackward(first)) {
             if (shouldSwitchBackwardUpper(first)) {
                 System.out.println("shouldCheckBackward.shouldSwitchBackwardUpper");
+                if (isExecuteNotClick()) {
+                    return true;
+                }
                 gameArea[x][first.y - 1].click();
                 gameArea[x - 1][first.y - 1].click();
                 return true;
             }
             if (shouldSwitchBackwardLower(first)) {
                 System.out.println("shouldCheckBackward.shouldSwitchBackwardLower");
+                if (isExecuteNotClick()) {
+                    return true;
+                }
                 gameArea[x][first.y - 1].click();
                 gameArea[x + 1][first.y - 1].click();
                 return true;
@@ -44,12 +55,18 @@ public class HorizontalFourCheck extends AbstractChecker {
         if (shouldCheckForward(first)) {
             if (shouldSwitchForwardUpper(first)) {
                 System.out.println("shouldCheckForward.shouldSwitchForwardUpper");
+                if (isExecuteNotClick()) {
+                    return true;
+                }
                 gameArea[x][first.y + 1].click();
                 gameArea[x - 1][first.y + 1].click();
                 return true;
             }
             if (shouldSwitchForwardLower(first)) {
                 System.out.println("shouldCheckForward.shouldSwitchForwardLower");
+                if (isExecuteNotClick()) {
+                    return true;
+                }
                 gameArea[x][first.y + 1].click();
                 gameArea[x + 1][first.y + 1].click();
                 return true;
