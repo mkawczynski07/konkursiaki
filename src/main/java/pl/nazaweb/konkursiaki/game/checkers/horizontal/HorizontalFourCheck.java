@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import pl.nazaweb.konkursiaki.game.GamePuzzle;
 import pl.nazaweb.konkursiaki.game.checkers.AbstractChecker;
+import pl.nazaweb.konkursiaki.game.checkers.GameClick;
 
 /**
  *
@@ -24,6 +25,7 @@ public class HorizontalFourCheck extends AbstractChecker {
     @Override
     public boolean check() {
         System.out.println(this.getClass().getSimpleName());
+        boolean result = false;
         if (isMoreThenThreeTypesInRow() == false) {
             return false;
         }
@@ -34,46 +36,34 @@ public class HorizontalFourCheck extends AbstractChecker {
         if (shouldCheckBackward(first)) {
             if (shouldSwitchBackwardUpper(first)) {
                 System.out.println("shouldCheckBackward.shouldSwitchBackwardUpper");
-                if (isExecuteNotClick()) {
-                    return true;
-                }
-                gameArea[x][first.y - 1].click();
-                gameArea[x - 1][first.y - 1].click();
-                return true;
+                GameClick click = addClick(gameArea[x][first.y - 1], gameArea[x - 1][first.y - 1]);
+                click.addPuzzle(x, y).addPuzzle(x, y - 1).addPuzzle(x, y - 2).addPuzzle(x, y + 1);
+                result = true;
             }
             if (shouldSwitchBackwardLower(first)) {
                 System.out.println("shouldCheckBackward.shouldSwitchBackwardLower");
-                if (isExecuteNotClick()) {
-                    return true;
-                }
-                gameArea[x][first.y - 1].click();
-                gameArea[x + 1][first.y - 1].click();
-                return true;
+                GameClick click = addClick(gameArea[x][first.y - 1], gameArea[x + 1][first.y - 1]);
+                click.addPuzzle(x, y).addPuzzle(x, y - 1).addPuzzle(x, y - 2).addPuzzle(x, y + 1);
+                result = true;
             }
         }
         first = new Point(x, first.y + 1);
         if (shouldCheckForward(first)) {
             if (shouldSwitchForwardUpper(first)) {
                 System.out.println("shouldCheckForward.shouldSwitchForwardUpper");
-                if (isExecuteNotClick()) {
-                    return true;
-                }
-                gameArea[x][first.y + 1].click();
-                gameArea[x - 1][first.y + 1].click();
-                return true;
+                GameClick click = addClick(gameArea[x][first.y + 1], gameArea[x - 1][first.y + 1]);
+                click.addPuzzle(x, y).addPuzzle(x, y - 1).addPuzzle(x, y + 2).addPuzzle(x, y + 1);
+                result = true;
             }
             if (shouldSwitchForwardLower(first)) {
                 System.out.println("shouldCheckForward.shouldSwitchForwardLower");
-                if (isExecuteNotClick()) {
-                    return true;
-                }
-                gameArea[x][first.y + 1].click();
-                gameArea[x + 1][first.y + 1].click();
-                return true;
+                GameClick click = addClick(gameArea[x][first.y + 1], gameArea[x + 1][first.y + 1]);
+                click.addPuzzle(x, y).addPuzzle(x, y - 1).addPuzzle(x, y + 2).addPuzzle(x, y + 1);
+                result = true;
             }
         }
 
-        return false;
+        return result;
     }
 
     private boolean isMoreThenThreeTypesInRow() {

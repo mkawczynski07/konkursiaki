@@ -22,6 +22,14 @@ public class HorizontalFourCheckNGTest extends AbstractTest {
     }
 
     @Test
+    public void shouldFindOneGameClick() throws IOException, AWTException {
+        GamePuzzle[][] gameArea = new GameImageReader().read(getTest10GameImage());
+        HorizontalFourCheck instance = new HorizontalFourCheck(gameArea, 2, 1);
+        instance.check();
+        assertEquals(instance.getClicks().size(), 1);
+    }
+
+    @Test
     public void shouldFindFourIn1Row() throws IOException, AWTException {
         GamePuzzle[][] gameArea = new GameImageReader().read(getTest11GameImage());
         assertTrue(new HorizontalFourCheck(gameArea, 1, 0).check());
