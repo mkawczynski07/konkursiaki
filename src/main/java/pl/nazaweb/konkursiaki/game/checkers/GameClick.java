@@ -14,6 +14,7 @@ public class GameClick {
     private final GamePuzzle first;
     private final GamePuzzle second;
     protected List<Point> puzzles = new ArrayList();
+    private int clickCount = 0;
 
     public GameClick(GamePuzzle first, GamePuzzle second) {
         this.first = first;
@@ -32,6 +33,22 @@ public class GameClick {
 
     public List<Point> getPuzzles() {
         return puzzles;
+    }
+
+    public int getClickCount() {
+        return clickCount;
+    }
+
+    public void setClickCount(int clickCount) {
+        this.clickCount = clickCount;
+    }
+
+    public GamePuzzle getFirst() {
+        return first;
+    }
+
+    public GamePuzzle getSecond() {
+        return second;
     }
 
 }

@@ -14,22 +14,29 @@ public class GameAreaSimulator {
     private List<GameClick> clicks;
     private GamePuzzle[][] gameArea;
     int emptyCounter = -1;
-//zainicjalizowac game area dla kazdego przejscia po klikach na nowo
 
     public GameClick simulate(List<GameClick> clicks, GamePuzzle[][] area) {
         init(clicks, area);
+        clicks.stream().forEach((click) -> {
+            int clickCount = getClickCount(area, click);
+            click.setClickCount(clickCount);
+        });
+        int max = -1;
+        GameClick result = null;
         for (GameClick click : clicks) {
-            initGameArea(area);
-            for (Point puzzle : click.getPuzzles()) {
-                movePuzzle(puzzle);
-                //symulacja i zapis wynikow
+            if (click.getClickCount() > max) {
+                max = click.getClickCount();
             }
-
         }
+        return result;
+    }
 
-        //wybranie najlepszego wyniku
-        
-        return null;
+    private int getClickCount(GamePuzzle[][] area, GameClick click) {
+        initGameArea(area);
+        click.getPuzzles().stream().forEach((Point puzzle) -> {
+            movePuzzle(puzzle);
+        });
+        return new GameImageCheckCounter(gameArea).count();
     }
 
     private void init(List<GameClick> clicks, GamePuzzle[][] area) {
